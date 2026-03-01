@@ -72,6 +72,7 @@ Title.Parent = ScreenGui
 -- Animation values
 local timeValue = 0
 local rotationValue = 0
+local rotationSpeed = 260 -- TỐC ĐỘ XOAY (tăng/giảm tuỳ thích)
 
 -- Update per frame
 RunService.RenderStepped:Connect(function(dt)
@@ -79,16 +80,17 @@ RunService.RenderStepped:Connect(function(dt)
 
 	timeValue += dt
 
-	-- Pulse + rainbow (pulse vẫn giữ nhưng KHÔNG dùng cho size)
+	-- Rainbow (giữ pulse nhưng KHÔNG dùng cho size)
 	local pulse = (math.sin(timeValue * 5.5) + 1) / 2
 	local hue = (timeValue * 0.2) % 1
 	local rainbowColor = Color3.fromHSV(hue, 0.8, 1)
 
-	rotationValue += (80 + pulse * 140) * dt
+	-- XOAY NHANH + MƯỢT, KHÔNG KHỰNG
+	rotationValue = (rotationValue + rotationSpeed * dt) % 360
 	MainFrame.Rotation = rotationValue
 	Title.TextColor3 = rainbowColor
 
-	-- SIZE CỐ ĐỊNH → KHÔNG BUNG / CO GIÃN
+	-- SIZE CỐ ĐỊNH (KHÔNG BUNG / CO GIÃN)
 	local length = 22
 	local gap = 28
 	local offset = (length / 2) + (gap / 2)
