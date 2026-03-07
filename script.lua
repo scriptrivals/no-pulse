@@ -72,7 +72,7 @@ Title.Parent = ScreenGui
 -- Animation values
 local timeValue = 0
 local rotationValue = 0
-local rotationSpeed = 260 -- TỐC ĐỘ XOAY (tăng/giảm tuỳ thích)
+local rotationSpeed = 400 -- TỐC ĐỘ XOAY (tăng/giảm tuỳ thích)
 
 -- Update per frame
 RunService.RenderStepped:Connect(function(dt)
@@ -91,7 +91,7 @@ RunService.RenderStepped:Connect(function(dt)
 	Title.TextColor3 = rainbowColor
 
 	-- SIZE CỐ ĐỊNH (KHÔNG BUNG / CO GIÃN)
-	local length = 22
+	local length = 30
 	local gap = 28
 	local offset = (length / 2) + (gap / 2)
 
